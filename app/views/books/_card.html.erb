@@ -1,0 +1,51 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Book #<%= book.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Name</dt>
+      <!-- Display name start -->
+      <dd><%= book.name %></dd>
+      <!-- Display name end -->
+
+      <dt>Publishing year</dt>
+      <!-- Display publishing_year start -->
+      <dd><%= book.publishing_year %></dd>
+      <!-- Display publishing_year end -->
+
+      <dt>Author</dt>
+      <!-- Display author_id start -->
+      <dd><%= book.author_id %></dd>
+      <!-- Display author_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back book, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link book start -->
+      <div class="col">
+        <%= link_to edit_book_url(book), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link book end -->
+
+      <!-- Delete link book start -->
+      <div class="col">
+        <%= link_to book, method: :delete, data: { confirm: "Do you really want to delete this book?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link book end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(book.updated_at) %> ago
+  </div>
+</div>
