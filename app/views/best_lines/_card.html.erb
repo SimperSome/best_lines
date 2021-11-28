@@ -7,7 +7,9 @@
     <dl class="mb-1">
       <dt>Image</dt>
       <!-- Display image start -->
-      <dd><%= best_line.image %></dd>
+      <dd>
+        <%= cl_image_tag @best_line.image, class: "img-fluid" %>
+      </dd>
       <!-- Display image end -->
 
       <dt>Book</dt>

@@ -22,7 +22,9 @@
 
       <dt>Image</dt>
       <!-- Display image start -->
-      <dd><%= author.image %></dd>
+      <dd>
+        <%= cl_image_tag @author.image, class: "img-fluid" %>
+      </dd>
       <!-- Display image end -->
 
     </dl>
