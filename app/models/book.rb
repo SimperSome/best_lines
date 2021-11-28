@@ -1,6 +1,9 @@
 class Book < ApplicationRecord
   # Direct associations
 
+  belongs_to :author,
+             :counter_cache => true
+
   # Indirect associations
 
   # Validations
