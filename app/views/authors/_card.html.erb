@@ -19,6 +19,13 @@
         <%= cl_image_tag @author.image, class: "img-fluid" %>
       </dd>
 
+      <dt>User</dt>
+      <dd>
+        <% if @author.user.present? %>
+          <%= link_to author.user, author.user %>
+        <% end %>
+      </dd>
+
     </dl>
 
     <div class="row">

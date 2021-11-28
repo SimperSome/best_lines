@@ -2,11 +2,15 @@ require "rails_helper"
 
 RSpec.describe Author, type: :model do
   describe "Direct Associations" do
-    it { should have_many(:books) }
+    it { should belong_to(:user) }
+
+    it { should have_many(:bibliography) }
   end
 
   describe "InDirect Associations" do
-    it { should have_many(:best_lines) }
+    it { should have_many(:best_writing) }
+
+    it { should have_many(:categories) }
   end
 
   describe "Validations" do
