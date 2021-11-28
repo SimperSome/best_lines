@@ -17,7 +17,7 @@
     <%= f.label :book_id %>
 
     <!-- Input for book_id start -->
-    <%= f.text_field :book_id, class: "form-control" %>
+    <%= f.collection_select :book_id, Book.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for book_id end -->
   </div>
   <!-- Label and input for book_id end -->

@@ -42,7 +42,7 @@
 
     <%= f.label :book_id %>
     <!-- Input for book_id start -->
-    <%= f.number_field :book_id, class: book_class, placeholder: "Enter book" %>
+    <%= f.collection_select :book_id, Book.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for book_id end -->
     <% if book_was_invalid %>
       <% best_line.errors.full_messages_for(:book).each do |message| %>
