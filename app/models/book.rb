@@ -1,13 +1,20 @@
 class Book < ApplicationRecord
   # Direct associations
 
+  belongs_to :user,
+             optional: true
+
   has_many   :best_lines,
              dependent: :destroy
 
   belongs_to :author,
-             counter_cache: true
+             counter_cache: :bibliography_count
 
   # Indirect associations
+
+  has_many   :categories,
+             through: :best_lines,
+             source: :category
 
   # Validations
 

@@ -2,6 +2,8 @@ require "rails_helper"
 
 RSpec.describe BestLine, type: :model do
   describe "Direct Associations" do
+    it { should belong_to(:user) }
+
     it { should belong_to(:book) }
 
     it { should belong_to(:category) }
