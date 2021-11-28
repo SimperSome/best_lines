@@ -3,7 +3,8 @@ class BestLinesController < ApplicationController
 
   # GET /best_lines
   def index
-    @best_lines = BestLine.page(params[:page]).per(10)
+    @q = BestLine.ransack(params[:q])
+    @best_lines = @q.result(:distinct => true).includes(:category, :book, :author).page(params[:page]).per(10)
   end
 
   # GET /best_lines/1

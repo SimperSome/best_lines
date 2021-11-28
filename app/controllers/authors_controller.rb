@@ -3,7 +3,8 @@ class AuthorsController < ApplicationController
 
   # GET /authors
   def index
-    @authors = Author.page(params[:page]).per(10)
+    @q = Author.ransack(params[:q])
+    @authors = @q.result(:distinct => true).includes(:books, :best_lines).page(params[:page]).per(10)
   end
 
   # GET /authors/1
