@@ -42,8 +42,14 @@ class BestLinesController < ApplicationController
   # DELETE /best_lines/1
   def destroy
     @best_line.destroy
-    redirect_to best_lines_url, notice: 'Best line was successfully destroyed.'
+    message = "BestLine was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to best_lines_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
