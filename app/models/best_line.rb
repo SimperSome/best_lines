@@ -1,6 +1,9 @@
 class BestLine < ApplicationRecord
   # Direct associations
 
+  belongs_to :book,
+             :counter_cache => true
+
   belongs_to :category,
              :counter_cache => true
 
