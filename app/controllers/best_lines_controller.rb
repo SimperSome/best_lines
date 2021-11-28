@@ -3,7 +3,7 @@ class BestLinesController < ApplicationController
 
   # GET /best_lines
   def index
-    @best_lines = BestLine.all
+    @best_lines = BestLine.page(params[:page]).per(10)
   end
 
   # GET /best_lines/1

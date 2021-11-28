@@ -34,6 +34,10 @@
       <div class="list-group list-group-flush">
         <%= render collection: @best_lines, partial: "list_item", as: :best_line %>
       </div>
+      <div class="card-footer d-flex justify-content-center">
+        <%= paginate @best_lines, theme: 'twitter-bootstrap-4' %>
+      </div>
+
     </div>
   </div>
 </div>

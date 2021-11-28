@@ -3,7 +3,7 @@ class AuthorsController < ApplicationController
 
   # GET /authors
   def index
-    @authors = Author.all
+    @authors = Author.page(params[:page]).per(10)
   end
 
   # GET /authors/1
