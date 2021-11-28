@@ -68,7 +68,7 @@
 
     <%= f.label :author_id %>
     <!-- Input for author_id start -->
-    <%= f.number_field :author_id, class: author_class, placeholder: "Enter author" %>
+    <%= f.collection_select :author_id, Author.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for author_id end -->
     <% if author_was_invalid %>
       <% book.errors.full_messages_for(:author).each do |message| %>
