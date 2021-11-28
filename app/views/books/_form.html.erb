@@ -1,7 +1,6 @@
 <% was_validated = book.errors.any? %>
 
 <%= form_with(model: book, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for name start -->
   <div class="form-group">
     <% name_class = "form-control" %>
     <% name_was_invalid = book.errors.include?(:name) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :name %>
-    <!-- Input for name start -->
     <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
-    <!-- Input for name end -->
     <% if name_was_invalid %>
       <% book.errors.full_messages_for(:name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for name end -->
-  <!-- Label and input for publishing_year start -->
   <div class="form-group">
     <% publishing_year_class = "form-control" %>
     <% publishing_year_was_invalid = book.errors.include?(:publishing_year) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :publishing_year %>
-    <!-- Input for publishing_year start -->
     <%= f.number_field :publishing_year, class: publishing_year_class, placeholder: "Enter publishing year" %>
-    <!-- Input for publishing_year end -->
     <% if publishing_year_was_invalid %>
       <% book.errors.full_messages_for(:publishing_year).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for publishing_year end -->
-  <!-- Label and input for author_id start -->
   <div class="form-group">
     <% author_class = "form-control" %>
     <% author_was_invalid = book.errors.include?(:author) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :author_id %>
-    <!-- Input for author_id start -->
     <%= f.collection_select :author_id, Author.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for author_id end -->
     <% if author_was_invalid %>
       <% book.errors.full_messages_for(:author).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,6 +67,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for author_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

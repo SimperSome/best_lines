@@ -1,7 +1,6 @@
 <% was_validated = best_line.errors.any? %>
 
 <%= form_with(model: best_line, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for image start -->
   <div class="form-group">
     <% image_class = "form-control" %>
     <% image_was_invalid = best_line.errors.include?(:image) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :image %>
-    <!-- Input for image start -->
     <%= f.file_field :image, class: "form-control" %>
-    <!-- Input for image end -->
     <% if image_was_invalid %>
       <% best_line.errors.full_messages_for(:image).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for image end -->
-  <!-- Label and input for book_id start -->
   <div class="form-group">
     <% book_class = "form-control" %>
     <% book_was_invalid = best_line.errors.include?(:book) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :book_id %>
-    <!-- Input for book_id start -->
     <%= f.collection_select :book_id, Book.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for book_id end -->
     <% if book_was_invalid %>
       <% best_line.errors.full_messages_for(:book).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for book_id end -->
-  <!-- Label and input for page start -->
   <div class="form-group">
     <% page_class = "form-control" %>
     <% page_was_invalid = best_line.errors.include?(:page) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :page %>
-    <!-- Input for page start -->
     <%= f.number_field :page, class: page_class, placeholder: "Enter page" %>
-    <!-- Input for page end -->
     <% if page_was_invalid %>
       <% best_line.errors.full_messages_for(:page).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for page end -->
-  <!-- Label and input for notes start -->
   <div class="form-group">
     <% note_class = "form-control" %>
     <% note_was_invalid = best_line.errors.include?(:note) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :notes %>
-    <!-- Input for notes start -->
     <%= f.text_area :notes, class: note_class, placeholder: "Enter note" %>
-    <!-- Input for notes end -->
     <% if note_was_invalid %>
       <% best_line.errors.full_messages_for(:note).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,8 +89,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for notes end -->
-  <!-- Label and input for category_id start -->
   <div class="form-group">
     <% category_class = "form-control" %>
     <% category_was_invalid = best_line.errors.include?(:category) %>
@@ -119,9 +102,7 @@
     <% end %>
 
     <%= f.label :category_id %>
-    <!-- Input for category_id start -->
     <%= f.collection_select :category_id, Category.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for category_id end -->
     <% if category_was_invalid %>
       <% best_line.errors.full_messages_for(:category).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -130,6 +111,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for category_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

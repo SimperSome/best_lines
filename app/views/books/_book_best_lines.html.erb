@@ -10,24 +10,18 @@
   <ul class="list-group list-group-flush">
     <% @book.best_lines.each do |best_line| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to best_line, best_line %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <%= link_to best_line, method: :delete, data: { confirm: "Do you really want to delete this best_line" } do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="book_best_lines_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "books/book_best_lines_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

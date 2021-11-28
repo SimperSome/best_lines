@@ -1,51 +1,29 @@
-<!-- Form best_line start -->
 <%= form_with(model: @best_line, local: true) do |f| %>
-<!-- Form best_line end -->
 
-  <!-- Label and input for image start -->
   <div class="form-group">
     <%= f.label :image %>
 
-    <!-- Input for image start -->
     <%= f.file_field :image, class: "form-control" %>
-    <!-- Input for image end -->
   </div>
-  <!-- Label and input for image end -->
 
-  <!-- Label and input for book_id start -->
   <div class="form-group">
     <%= f.label :book_id %>
 
-    <!-- Input for book_id start -->
     <%= f.collection_select :book_id, Book.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for book_id end -->
   </div>
-  <!-- Label and input for book_id end -->
 
-  <!-- Label and input for page start -->
   <div class="form-group">
     <%= f.label :page %>
 
-    <!-- Input for page start -->
     <%= f.text_field :page, class: "form-control" %>
-    <!-- Input for page end -->
   </div>
-  <!-- Label and input for page end -->
 
-  <!-- Label and input for notes start -->
   <div class="form-group">
     <%= f.label :notes %>
-    <!-- Input for notes start -->
     <%= f.text_area :notes, rows: "3", class: "form-control" %>
-    <!-- Input for notes end -->
   </div>
-  <!-- Label and input for notes end -->
 
-  <!-- Label and input for category_id start -->
-  <!-- Input for category_id start -->
   <%= f.hidden_field :category_id, value: @category.id %>
-  <!-- Input for category_id end -->
-  <!-- Label and input for category_id end -->
 
   <%= f.submit "Create best line", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

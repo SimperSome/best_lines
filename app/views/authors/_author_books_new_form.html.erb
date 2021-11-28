@@ -1,32 +1,18 @@
-<!-- Form book start -->
 <%= form_with(model: @book, local: true) do |f| %>
-<!-- Form book end -->
 
-  <!-- Label and input for name start -->
   <div class="form-group">
     <%= f.label :name %>
 
-    <!-- Input for name start -->
     <%= f.text_field :name, class: "form-control" %>
-    <!-- Input for name end -->
   </div>
-  <!-- Label and input for name end -->
 
-  <!-- Label and input for publishing_year start -->
   <div class="form-group">
     <%= f.label :publishing_year %>
 
-    <!-- Input for publishing_year start -->
     <%= f.text_field :publishing_year, class: "form-control" %>
-    <!-- Input for publishing_year end -->
   </div>
-  <!-- Label and input for publishing_year end -->
 
-  <!-- Label and input for author_id start -->
-  <!-- Input for author_id start -->
   <%= f.hidden_field :author_id, value: @author.id %>
-  <!-- Input for author_id end -->
-  <!-- Label and input for author_id end -->
 
   <%= f.submit "Create book", class: "btn btn-block btn-outline-secondary" %>
 <% end %>
