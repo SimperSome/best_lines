@@ -8,6 +8,8 @@ class BookResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :best_lines
+
   belongs_to :author
 
   # Indirect associations
