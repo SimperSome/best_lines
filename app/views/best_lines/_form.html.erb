@@ -1,0 +1,135 @@
+<% was_validated = best_line.errors.any? %>
+
+<%= form_with(model: best_line, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for image start -->
+  <div class="form-group">
+    <% image_class = "form-control" %>
+    <% image_was_invalid = best_line.errors.include?(:image) %>
+
+    <% if was_validated %>
+      <% if image_was_invalid %>
+        <% image_class << " is-invalid" %>
+      <% else %>
+        <% image_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :image %>
+    <!-- Input for image start -->
+    <%= f.text_field :image, class: image_class, placeholder: "Enter image" %>
+    <!-- Input for image end -->
+    <% if image_was_invalid %>
+      <% best_line.errors.full_messages_for(:image).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for image end -->
+  <!-- Label and input for book_id start -->
+  <div class="form-group">
+    <% book_class = "form-control" %>
+    <% book_was_invalid = best_line.errors.include?(:book) %>
+
+    <% if was_validated %>
+      <% if book_was_invalid %>
+        <% book_class << " is-invalid" %>
+      <% else %>
+        <% book_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :book_id %>
+    <!-- Input for book_id start -->
+    <%= f.number_field :book_id, class: book_class, placeholder: "Enter book" %>
+    <!-- Input for book_id end -->
+    <% if book_was_invalid %>
+      <% best_line.errors.full_messages_for(:book).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for book_id end -->
+  <!-- Label and input for page start -->
+  <div class="form-group">
+    <% page_class = "form-control" %>
+    <% page_was_invalid = best_line.errors.include?(:page) %>
+
+    <% if was_validated %>
+      <% if page_was_invalid %>
+        <% page_class << " is-invalid" %>
+      <% else %>
+        <% page_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :page %>
+    <!-- Input for page start -->
+    <%= f.number_field :page, class: page_class, placeholder: "Enter page" %>
+    <!-- Input for page end -->
+    <% if page_was_invalid %>
+      <% best_line.errors.full_messages_for(:page).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for page end -->
+  <!-- Label and input for notes start -->
+  <div class="form-group">
+    <% note_class = "form-control" %>
+    <% note_was_invalid = best_line.errors.include?(:note) %>
+
+    <% if was_validated %>
+      <% if note_was_invalid %>
+        <% note_class << " is-invalid" %>
+      <% else %>
+        <% note_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :notes %>
+    <!-- Input for notes start -->
+    <%= f.text_area :notes, class: note_class, placeholder: "Enter note" %>
+    <!-- Input for notes end -->
+    <% if note_was_invalid %>
+      <% best_line.errors.full_messages_for(:note).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for notes end -->
+  <!-- Label and input for category_id start -->
+  <div class="form-group">
+    <% category_class = "form-control" %>
+    <% category_was_invalid = best_line.errors.include?(:category) %>
+
+    <% if was_validated %>
+      <% if category_was_invalid %>
+        <% category_class << " is-invalid" %>
+      <% else %>
+        <% category_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :category_id %>
+    <!-- Input for category_id start -->
+    <%= f.number_field :category_id, class: category_class, placeholder: "Enter category" %>
+    <!-- Input for category_id end -->
+    <% if category_was_invalid %>
+      <% best_line.errors.full_messages_for(:category).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for category_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

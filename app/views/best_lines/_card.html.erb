@@ -1,0 +1,61 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Best Line #<%= best_line.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Image</dt>
+      <!-- Display image start -->
+      <dd><%= best_line.image %></dd>
+      <!-- Display image end -->
+
+      <dt>Book</dt>
+      <!-- Display book_id start -->
+      <dd><%= best_line.book_id %></dd>
+      <!-- Display book_id end -->
+
+      <dt>Page</dt>
+      <!-- Display page start -->
+      <dd><%= best_line.page %></dd>
+      <!-- Display page end -->
+
+      <dt>Notes</dt>
+      <!-- Display notes start -->
+      <dd><%= best_line.notes %></dd>
+      <!-- Display notes end -->
+
+      <dt>Category</dt>
+      <!-- Display category_id start -->
+      <dd><%= best_line.category_id %></dd>
+      <!-- Display category_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back best_line, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link best_line start -->
+      <div class="col">
+        <%= link_to edit_best_line_url(best_line), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link best_line end -->
+
+      <!-- Delete link best_line start -->
+      <div class="col">
+        <%= link_to best_line, method: :delete, data: { confirm: "Do you really want to delete this best_line?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link best_line end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(best_line.updated_at) %> ago
+  </div>
+</div>
