@@ -1,13 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe BestLineResource, type: :resource do
-  describe 'creating' do
+  describe "creating" do
     let(:payload) do
       {
         data: {
-          type: 'best_lines',
-          attributes: { }
-        }
+          type: "best_lines",
+          attributes: {},
+        },
       }
     end
 
@@ -15,23 +15,24 @@ RSpec.describe BestLineResource, type: :resource do
       BestLineResource.build(payload)
     end
 
-    it 'works' do
-      expect {
-        expect(instance.save).to eq(true), instance.errors.full_messages.to_sentence
-      }.to change { BestLine.count }.by(1)
+    it "works" do
+      expect do
+        expect(instance.save).to eq(true),
+                                 instance.errors.full_messages.to_sentence
+      end.to change { BestLine.count }.by(1)
     end
   end
 
-  describe 'updating' do
+  describe "updating" do
     let!(:best_line) { create(:best_line) }
 
     let(:payload) do
       {
         data: {
           id: best_line.id.to_s,
-          type: 'best_lines',
-          attributes: { } # Todo!
-        }
+          type: "best_lines",
+          attributes: {}, # Todo!
+        },
       }
     end
 
@@ -39,25 +40,25 @@ RSpec.describe BestLineResource, type: :resource do
       BestLineResource.find(payload)
     end
 
-    xit 'works (add some attributes and enable this spec)' do
-      expect {
+    xit "works (add some attributes and enable this spec)" do
+      expect do
         expect(instance.update_attributes).to eq(true)
-      }.to change { best_line.reload.updated_at }
+      end.to change { best_line.reload.updated_at }
       # .and change { best_line.foo }.to('bar') <- example
     end
   end
 
-  describe 'destroying' do
+  describe "destroying" do
     let!(:best_line) { create(:best_line) }
 
     let(:instance) do
       BestLineResource.find(id: best_line.id)
     end
 
-    it 'works' do
-      expect {
+    it "works" do
+      expect do
         expect(instance.destroy).to eq(true)
-      }.to change { BestLine.count }.by(-1)
+      end.to change { BestLine.count }.by(-1)
     end
   end
 end

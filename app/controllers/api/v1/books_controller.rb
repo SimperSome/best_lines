@@ -13,7 +13,7 @@ class Api::V1::BooksController < Api::V1::GraphitiController
     book = BookResource.build(params)
 
     if book.save
-      render jsonapi: book, status: 201
+      render jsonapi: book, status: :created
     else
       render jsonapi_errors: book
     end
@@ -33,7 +33,7 @@ class Api::V1::BooksController < Api::V1::GraphitiController
     book = BookResource.find(params)
 
     if book.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: book
     end

@@ -13,7 +13,7 @@ class Api::V1::AuthorsController < Api::V1::GraphitiController
     author = AuthorResource.build(params)
 
     if author.save
-      render jsonapi: author, status: 201
+      render jsonapi: author, status: :created
     else
       render jsonapi_errors: author
     end
@@ -33,7 +33,7 @@ class Api::V1::AuthorsController < Api::V1::GraphitiController
     author = AuthorResource.find(params)
 
     if author.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: author
     end

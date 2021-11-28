@@ -1,15 +1,15 @@
 class BestLinesController < ApplicationController
-  before_action :set_best_line, only: [:show, :edit, :update, :destroy]
+  before_action :set_best_line, only: %i[show edit update destroy]
 
   # GET /best_lines
   def index
     @q = BestLine.ransack(params[:q])
-    @best_lines = @q.result(:distinct => true).includes(:category, :book, :author).page(params[:page]).per(10)
+    @best_lines = @q.result(distinct: true).includes(:category, :book,
+                                                     :author).page(params[:page]).per(10)
   end
 
   # GET /best_lines/1
-  def show
-  end
+  def show; end
 
   # GET /best_lines/new
   def new
@@ -17,17 +17,16 @@ class BestLinesController < ApplicationController
   end
 
   # GET /best_lines/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /best_lines
   def create
     @best_line = BestLine.new(best_line_params)
 
     if @best_line.save
-      message = 'BestLine was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "BestLine was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @best_line, notice: message
       end
@@ -39,7 +38,7 @@ class BestLinesController < ApplicationController
   # PATCH/PUT /best_lines/1
   def update
     if @best_line.update(best_line_params)
-      redirect_to @best_line, notice: 'Best line was successfully updated.'
+      redirect_to @best_line, notice: "Best line was successfully updated."
     else
       render :edit
     end
@@ -49,22 +48,23 @@ class BestLinesController < ApplicationController
   def destroy
     @best_line.destroy
     message = "BestLine was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to best_lines_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_best_line
-      @best_line = BestLine.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def best_line_params
-      params.require(:best_line).permit(:image, :book_id, :page, :notes, :category_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_best_line
+    @best_line = BestLine.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def best_line_params
+    params.require(:best_line).permit(:image, :book_id, :page, :notes,
+                                      :category_id)
+  end
 end

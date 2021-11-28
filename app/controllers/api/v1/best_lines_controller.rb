@@ -13,7 +13,7 @@ class Api::V1::BestLinesController < Api::V1::GraphitiController
     best_line = BestLineResource.build(params)
 
     if best_line.save
-      render jsonapi: best_line, status: 201
+      render jsonapi: best_line, status: :created
     else
       render jsonapi_errors: best_line
     end
@@ -33,7 +33,7 @@ class Api::V1::BestLinesController < Api::V1::GraphitiController
     best_line = BestLineResource.find(params)
 
     if best_line.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: best_line
     end

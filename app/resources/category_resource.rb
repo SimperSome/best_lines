@@ -6,8 +6,7 @@ class CategoryResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :best_lines
+  has_many :best_lines
 
   # Indirect associations
-
 end

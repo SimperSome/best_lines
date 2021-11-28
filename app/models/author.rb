@@ -4,13 +4,13 @@ class Author < ApplicationRecord
   # Direct associations
 
   has_many   :books,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :best_lines,
-             :through => :books,
-             :source => :best_lines
+             through: :books,
+             source: :best_lines
 
   # Validations
 
@@ -19,5 +19,4 @@ class Author < ApplicationRecord
   def to_s
     name
   end
-
 end

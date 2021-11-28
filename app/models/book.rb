@@ -2,10 +2,10 @@ class Book < ApplicationRecord
   # Direct associations
 
   has_many   :best_lines,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :author,
-             :counter_cache => true
+             counter_cache: true
 
   # Indirect associations
 
@@ -16,5 +16,4 @@ class Book < ApplicationRecord
   def to_s
     name
   end
-
 end
