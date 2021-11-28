@@ -6,6 +6,10 @@ class Author < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :best_lines,
+             :through => :books,
+             :source => :best_lines
+
   # Validations
 
   # Scopes

@@ -10,6 +10,8 @@ RSpec.describe Author, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:best_lines) }
+
     end
 
     describe "Validations" do

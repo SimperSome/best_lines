@@ -9,6 +9,10 @@ class BestLine < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :author,
+             :through => :book,
+             :source => :author
+
   # Validations
 
   validates :page, :presence => true
