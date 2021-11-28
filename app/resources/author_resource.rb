@@ -13,4 +13,12 @@ class AuthorResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :best_lines do
+    assign_each do |author, best_lines|
+      best_lines.select do |b|
+        b.id.in?(author.best_lines.map(&:id))
+      end
+    end
+  end
+
 end
