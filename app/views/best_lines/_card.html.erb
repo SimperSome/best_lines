@@ -14,7 +14,11 @@
 
       <dt>Book</dt>
       <!-- Display book_id start -->
-      <dd><%= best_line.book_id %></dd>
+      <dd>
+        <% if @best_line.book.present? %>
+          <%= link_to best_line.book, best_line.book %>
+        <% end %>
+      </dd>
       <!-- Display book_id end -->
 
       <dt>Page</dt>
@@ -29,7 +33,11 @@
 
       <dt>Category</dt>
       <!-- Display category_id start -->
-      <dd><%= best_line.category_id %></dd>
+      <dd>
+        <% if @best_line.category.present? %>
+          <%= link_to best_line.category, best_line.category %>
+        <% end %>
+      </dd>
       <!-- Display category_id end -->
 
     </dl>
