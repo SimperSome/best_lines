@@ -1,25 +1,20 @@
 class BestLinesController < ApplicationController
   before_action :set_best_line, only: %i[show edit update destroy]
 
-  # GET /best_lines
   def index
     @q = BestLine.ransack(params[:q])
     @best_lines = @q.result(distinct: true).includes(:category, :book,
                                                      :author).page(params[:page]).per(10)
   end
 
-  # GET /best_lines/1
   def show; end
 
-  # GET /best_lines/new
   def new
     @best_line = BestLine.new
   end
 
-  # GET /best_lines/1/edit
   def edit; end
 
-  # POST /best_lines
   def create
     @best_line = BestLine.new(best_line_params)
 
@@ -35,7 +30,6 @@ class BestLinesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /best_lines/1
   def update
     if @best_line.update(best_line_params)
       redirect_to @best_line, notice: "Best line was successfully updated."
@@ -44,7 +38,6 @@ class BestLinesController < ApplicationController
     end
   end
 
-  # DELETE /best_lines/1
   def destroy
     @best_line.destroy
     message = "BestLine was successfully deleted."
@@ -57,12 +50,10 @@ class BestLinesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_best_line
     @best_line = BestLine.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def best_line_params
     params.require(:best_line).permit(:image, :book_id, :page, :notes,
                                       :category_id)
