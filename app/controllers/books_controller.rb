@@ -8,6 +8,7 @@ class BooksController < ApplicationController
 
   # GET /books/1
   def show
+    @best_line = BestLine.new
   end
 
   # GET /books/new
@@ -24,7 +25,12 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      redirect_to @book, notice: 'Book was successfully created.'
+      message = 'Book was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @book, notice: message
+      end
     else
       render :new
     end

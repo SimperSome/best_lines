@@ -8,6 +8,7 @@ class AuthorsController < ApplicationController
 
   # GET /authors/1
   def show
+    @book = Book.new
   end
 
   # GET /authors/new

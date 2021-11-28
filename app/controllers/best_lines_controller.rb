@@ -24,7 +24,12 @@ class BestLinesController < ApplicationController
     @best_line = BestLine.new(best_line_params)
 
     if @best_line.save
-      redirect_to @best_line, notice: 'Best line was successfully created.'
+      message = 'BestLine was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @best_line, notice: message
+      end
     else
       render :new
     end
