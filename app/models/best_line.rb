@@ -5,6 +5,8 @@ class BestLine < ApplicationRecord
 
   # Validations
 
+  validates :page, :presence => true
+
   # Scopes
 
   def to_s

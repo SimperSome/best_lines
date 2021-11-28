@@ -12,5 +12,7 @@ RSpec.describe BestLine, type: :model do
 
     describe "Validations" do
 
+    it { should validate_presence_of(:page) }
+
     end
 end
