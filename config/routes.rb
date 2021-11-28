@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "best_lines#index"
   resources :books
   resources :authors
   resources :categories
