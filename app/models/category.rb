@@ -1,6 +1,9 @@
 class Category < ApplicationRecord
   # Direct associations
 
+  has_many   :best_lines,
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
