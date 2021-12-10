@@ -9,14 +9,15 @@ class AuthorResource < ApplicationResource
 
   # Direct associations
 
-  has_many :books
+  has_many   :bibliography,
+             resource: BookResource
 
   # Indirect associations
 
-  has_many :best_lines do
+  has_many :best_writing, resource: BestLineResource do
     assign_each do |author, best_lines|
       best_lines.select do |b|
-        b.id.in?(author.best_lines.map(&:id))
+        b.id.in?(author.best_writing.map(&:id))
       end
     end
   end
