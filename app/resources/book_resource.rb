@@ -5,6 +5,7 @@ class BookResource < ApplicationResource
   attribute :name, :string
   attribute :publishing_year, :integer
   attribute :author_id, :integer
+  attribute :cover, :string
 
   # Direct associations
 
@@ -13,4 +14,7 @@ class BookResource < ApplicationResource
   belongs_to :author
 
   # Indirect associations
+
+  many_to_many :tastes,
+               resource: UserResource
 end
