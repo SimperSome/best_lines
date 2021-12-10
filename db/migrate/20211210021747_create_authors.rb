@@ -5,6 +5,7 @@ class CreateAuthors < ActiveRecord::Migration[6.0]
       t.date :dob
       t.text :bio
       t.string :image
+      t.integer :user_id
 
       t.timestamps
     end

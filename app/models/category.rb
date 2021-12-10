@@ -1,6 +1,8 @@
 class Category < ApplicationRecord
   # Direct associations
 
+  belongs_to :user
+
   has_many   :best_lines,
              dependent: :destroy
 
