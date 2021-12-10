@@ -4,7 +4,7 @@ class BestLinesController < ApplicationController
   def index
     @q = BestLine.ransack(params[:q])
     @best_lines = @q.result(distinct: true).includes(:category, :book,
-                                                     :author).page(params[:page]).per(10)
+                                                     :user, :author).page(params[:page]).per(10)
   end
 
   def show; end
@@ -56,6 +56,6 @@ class BestLinesController < ApplicationController
 
   def best_line_params
     params.require(:best_line).permit(:image, :book_id, :page, :notes,
-                                      :category_id)
+                                      :category_id, :user_id)
   end
 end
