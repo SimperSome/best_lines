@@ -6,6 +6,7 @@ class CreateBestLines < ActiveRecord::Migration[6.0]
       t.integer :page
       t.text :notes
       t.integer :category_id
+      t.integer :user_id
 
       t.timestamps
     end
