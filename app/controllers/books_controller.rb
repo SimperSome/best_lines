@@ -3,8 +3,8 @@ class BooksController < ApplicationController
 
   def index
     @q = Book.ransack(params[:q])
-    @books = @q.result(distinct: true).includes(:author,
-                                                :best_lines).page(params[:page]).per(10)
+    @books = @q.result(distinct: true).includes(:author, :best_lines,
+                                                :user).page(params[:page]).per(10)
   end
 
   def show
@@ -57,6 +57,7 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:name, :publishing_year, :author_id)
+    params.require(:book).permit(:name, :publishing_year, :author_id,
+                                 :user_id, :cover)
   end
 end
