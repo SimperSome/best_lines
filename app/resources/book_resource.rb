@@ -5,6 +5,7 @@ class BookResource < ApplicationResource
   attribute :name, :string
   attribute :publishing_year, :integer
   attribute :author_id, :integer
+  attribute :cover, :string
 
   # Direct associations
 
