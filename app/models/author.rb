@@ -3,13 +3,16 @@ class Author < ApplicationRecord
 
   # Direct associations
 
-  has_many   :books,
+  belongs_to :user
+
+  has_many   :bibliography,
+             class_name: "Book",
              dependent: :destroy
 
   # Indirect associations
 
-  has_many   :best_lines,
-             through: :books,
+  has_many   :best_writing,
+             through: :bibliography,
              source: :best_lines
 
   # Validations

@@ -24,21 +24,21 @@
     <% end %>
   </div>
   <div class="form-group">
-    <% dob_class = "form-control" %>
-    <% dob_was_invalid = author.errors.include?(:dob) %>
+    <% year_of_birth_class = "form-control" %>
+    <% year_of_birth_was_invalid = author.errors.include?(:year_of_birth) %>
 
     <% if was_validated %>
-      <% if dob_was_invalid %>
-        <% dob_class << " is-invalid" %>
+      <% if year_of_birth_was_invalid %>
+        <% year_of_birth_class << " is-invalid" %>
       <% else %>
-        <% dob_class << " is-valid" %>
+        <% year_of_birth_class << " is-valid" %>
       <% end %>
     <% end %>
 
-    <%= f.label :dob %>
-    <%= f.date_select :dob, class: dob_class, placeholder: "Enter dob" %>
-    <% if dob_was_invalid %>
-      <% author.errors.full_messages_for(:dob).each do |message| %>
+    <%= f.label :year_of_birth %>
+    <%= f.number_field :year_of_birth, class: year_of_birth_class, placeholder: "Enter year of birth" %>
+    <% if year_of_birth_was_invalid %>
+      <% author.errors.full_messages_for(:year_of_birth).each do |message| %>
         <div class="invalid-feedback d-flex">
           <%= message %>
         </div>
@@ -89,5 +89,6 @@
       <% end %>
     <% end %>
   </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
