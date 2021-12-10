@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Authors
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @category.authors.each do |author| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <a href="/authors/<%= author.id %>">
+          <%= author %>
+        </a>
+
+      </li>
+    <% end %>
+
+  </ul>
+</div>
