@@ -1,11 +1,13 @@
 class Book < ApplicationRecord
+  mount_uploader :cover, CoverUploader
+
   # Direct associations
 
   has_many   :best_lines,
              dependent: :destroy
 
   belongs_to :author,
-             counter_cache: true
+             counter_cache: :bibliography_count
 
   # Indirect associations
 
