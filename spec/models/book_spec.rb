@@ -8,6 +8,7 @@ RSpec.describe Book, type: :model do
   end
 
   describe "InDirect Associations" do
+    it { should have_many(:tastes) }
   end
 
   describe "Validations" do

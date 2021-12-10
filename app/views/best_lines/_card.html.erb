@@ -30,6 +30,13 @@
         <% end %>
       </dd>
 
+      <dt>User</dt>
+      <dd>
+        <% if @best_line.user.present? %>
+          <%= link_to best_line.user, best_line.user %>
+        <% end %>
+      </dd>
+
     </dl>
 
     <div class="row">
