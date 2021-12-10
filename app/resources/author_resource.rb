@@ -6,17 +6,21 @@ class AuthorResource < ApplicationResource
   attribute :dob, :date
   attribute :bio, :string
   attribute :image, :string
+  attribute :user_id, :integer
 
   # Direct associations
 
-  has_many :books
+  belongs_to :user
+
+  has_many   :bibliography,
+             resource: BookResource
 
   # Indirect associations
 
-  has_many :best_lines do
+  has_many :best_writing, resource: BestLineResource do
     assign_each do |author, best_lines|
       best_lines.select do |b|
-        b.id.in?(author.best_lines.map(&:id))
+        b.id.in?(author.best_writing.map(&:id))
       end
     end
   end
