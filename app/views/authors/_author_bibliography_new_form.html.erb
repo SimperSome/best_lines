@@ -14,5 +14,11 @@
 
   <%= f.hidden_field :author_id, value: @author.id %>
 
+  <div class="form-group">
+    <%= f.label :cover %>
+
+    <%= f.file_field :cover, class: "form-control" %>
+  </div>
+
   <%= f.submit "Create book", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

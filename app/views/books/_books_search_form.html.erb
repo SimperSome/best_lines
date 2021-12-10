@@ -65,21 +65,26 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :created_at, "BestLine Created at" %>
+    <%= f.label :best_lines_notes_cont, "Best lines notes contains" %>
+    <%= f.text_field :best_lines_notes_cont, :class => "form-control", :placeholder => "Best lines notes contains" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :created_at, "User Created at" %>
     <div class="row">
       <div class='col-md-6 mb-1'>
-        <div class='input-group date' id='best_linesgteqcreated_atPicker' data-target-input="nearest">
-          <%= f.text_field :best_lines_created_at_gteq, :class => "form-control datetimepicker-input", :placeholder => "BestLine Created at greater than or equal to", :data => {:target => '#best_linesgteqcreated_atPicker'} %>
-          <div class="input-group-append" data-target='#best_linesgteqcreated_atPicker' data-toggle="datetimepicker">
+        <div class='input-group date' id='tastesgteqcreated_atPicker' data-target-input="nearest">
+          <%= f.text_field :tastes_created_at_gteq, :class => "form-control datetimepicker-input", :placeholder => "User Created at greater than or equal to", :data => {:target => '#tastesgteqcreated_atPicker'} %>
+          <div class="input-group-append" data-target='#tastesgteqcreated_atPicker' data-toggle="datetimepicker">
             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
         </div>
       </div>
 
       <div class='col-md-6'>
-        <div class='input-group date' id='best_lineslteqcreated_atPicker' data-target-input="nearest">
-          <%= f.text_field :best_lines_created_at_lteq, :class => "form-control datetimepicker-input", :placeholder => "BestLine Created at less than or equal to", :data => {:target => '#best_lineslteqcreated_atPicker'} %>
-          <div class="input-group-append" data-target='#best_lineslteqcreated_atPicker' data-toggle="datetimepicker">
+        <div class='input-group date' id='tasteslteqcreated_atPicker' data-target-input="nearest">
+          <%= f.text_field :tastes_created_at_lteq, :class => "form-control datetimepicker-input", :placeholder => "User Created at less than or equal to", :data => {:target => '#tasteslteqcreated_atPicker'} %>
+          <div class="input-group-append" data-target='#tasteslteqcreated_atPicker' data-toggle="datetimepicker">
             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
         </div>
@@ -88,18 +93,18 @@
   </div>
   <script type="text/javascript">
       $(function () {
-          $('#best_linesgteqcreated_atPicker').datetimepicker({
+          $('#tastesgteqcreated_atPicker').datetimepicker({
               format: 'YYYY-MM-DD hh:mm:SS'
           });
-          $('#best_lineslteqcreated_atPicker').datetimepicker({
+          $('#tasteslteqcreated_atPicker').datetimepicker({
               useCurrent: false,
               format: 'YYYY-MM-DD hh:mm:SS'
           });
-          $('#best_linesgteqcreated_atPicker').on("dp.change", function (e) {
-              $('#best_lineslteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
+          $('#tastesgteqcreated_atPicker').on("dp.change", function (e) {
+              $('#tasteslteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
           });
-          $('#best_lineslteqcreated_atPicker').on("dp.change", function (e) {
-              $('#best_linesgteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
+          $('#tasteslteqcreated_atPicker').on("dp.change", function (e) {
+              $('#tastesgteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
           });
       });
   </script>
