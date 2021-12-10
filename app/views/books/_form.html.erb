@@ -67,5 +67,27 @@
       <% end %>
     <% end %>
   </div>
+  <div class="form-group">
+    <% cover_class = "form-control" %>
+    <% cover_was_invalid = book.errors.include?(:cover) %>
+
+    <% if was_validated %>
+      <% if cover_was_invalid %>
+        <% cover_class << " is-invalid" %>
+      <% else %>
+        <% cover_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :cover %>
+    <%= f.file_field :cover, class: "form-control" %>
+    <% if cover_was_invalid %>
+      <% book.errors.full_messages_for(:cover).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

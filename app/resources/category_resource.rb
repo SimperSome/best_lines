@@ -9,4 +9,6 @@ class CategoryResource < ApplicationResource
   has_many :best_lines
 
   # Indirect associations
+
+  many_to_many :users
 end

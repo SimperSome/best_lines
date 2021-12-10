@@ -6,6 +6,10 @@ class Category < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :users,
+             through: :best_lines,
+             source: :user
+
   # Validations
 
   # Scopes
