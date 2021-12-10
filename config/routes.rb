@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   scope path: ApplicationResource.endpoint_namespace,
         defaults: { format: :jsonapi } do
     scope module: "api/v1", as: "api" do
+      resources :users
+
       resources :books
 
       resources :authors
@@ -13,8 +15,11 @@ Rails.application.routes.draw do
     mount VandalUi::Engine, at: "/vandal"
     # your routes go here
   end
+  devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root to: "best_lines#index"
+  devise_for :users
+  resources :users
   resources :books
   resources :authors
   resources :categories

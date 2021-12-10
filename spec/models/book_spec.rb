@@ -2,6 +2,8 @@ require "rails_helper"
 
 RSpec.describe Book, type: :model do
   describe "Direct Associations" do
+    it { should belong_to(:user) }
+
     it { should have_many(:best_lines) }
 
     it { should belong_to(:author) }
