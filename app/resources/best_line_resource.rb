@@ -7,8 +7,11 @@ class BestLineResource < ApplicationResource
   attribute :page, :integer
   attribute :notes, :string
   attribute :category_id, :integer
+  attribute :user_id, :integer
 
   # Direct associations
+
+  belongs_to :user
 
   belongs_to :book
 

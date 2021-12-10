@@ -3,6 +3,9 @@ class BestLine < ApplicationRecord
 
   # Direct associations
 
+  belongs_to :user,
+             counter_cache: :favorite_lines_count
+
   belongs_to :book,
              counter_cache: true
 
@@ -17,11 +20,13 @@ class BestLine < ApplicationRecord
 
   # Validations
 
+  validates :image, presence: true
+
   validates :page, presence: true
 
   # Scopes
 
   def to_s
-    created_at
+    id
   end
 end

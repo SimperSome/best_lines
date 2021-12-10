@@ -3,6 +3,7 @@ class CategoryResource < ApplicationResource
   attribute :created_at, :datetime, writable: false
   attribute :updated_at, :datetime, writable: false
   attribute :category_name, :string
+  attribute :user_id, :integer
 
   # Direct associations
 
