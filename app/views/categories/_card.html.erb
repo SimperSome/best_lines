@@ -8,6 +8,13 @@
       <dt>Category name</dt>
       <dd><%= category.category_name %></dd>
 
+      <dt>User</dt>
+      <dd>
+        <% if @category.user.present? %>
+          <%= link_to category.user, category.user %>
+        <% end %>
+      </dd>
+
     </dl>
 
     <div class="row">
@@ -16,14 +23,18 @@
       </div>
 
       <div class="col">
-        <%= link_to edit_category_url(category), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_user == @category.user %>
+          <%= link_to edit_category_url(category), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
 
       <div class="col">
-        <%= link_to category, method: :delete, data: { confirm: "Do you really want to delete this category?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == @category.user %>
+          <%= link_to category, method: :delete, data: { confirm: "Do you really want to delete this category?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
     </div>

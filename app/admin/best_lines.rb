@@ -1,5 +1,5 @@
 ActiveAdmin.register BestLine do
-  permit_params :image, :book_id, :page, :notes, :category_id
+  permit_params :image, :book_id, :page, :notes, :category_id, :user_id
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

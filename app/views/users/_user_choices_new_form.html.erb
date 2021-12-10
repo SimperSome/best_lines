@@ -1,0 +1,12 @@
+<%= form_with(model: @category, local: true) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :category_name %>
+
+    <%= f.select :category_name, options_for_select(Category.category_names.keys), {}, class: "form-control" %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: @user.id %>
+
+  <%= f.submit "Create category", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

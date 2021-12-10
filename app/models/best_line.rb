@@ -3,6 +3,9 @@ class BestLine < ApplicationRecord
 
   # Direct associations
 
+  belongs_to :user,
+             counter_cache: :favorite_lines_count
+
   belongs_to :book,
              counter_cache: true
 

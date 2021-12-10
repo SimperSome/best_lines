@@ -14,7 +14,7 @@
     <% end %>
 
     <%= f.label :category_name %>
-    <%= f.text_field :category_name, class: category_name_class, placeholder: "Enter category name" %>
+    <%= f.select :category_name, options_for_select(Category.category_names.keys), {}, class: "form-control" %>
     <% if category_name_was_invalid %>
       <% category.errors.full_messages_for(:category_name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -23,5 +23,6 @@
       <% end %>
     <% end %>
   </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
